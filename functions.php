@@ -13,6 +13,19 @@ function child_enqueue__parent_scripts(): void
 }
 add_action( 'wp_enqueue_scripts', 'child_enqueue__parent_scripts' );
 
+// Add custom inline CSS to footer
+function add_custom_style_tag_to_footer(): void
+{
+    $custom_css = "
+
+/* Add custom css here */
+
+    ";
+
+    echo "<style> $custom_css </style>";
+}
+add_action('wp_footer', 'add_custom_style_tag_to_footer', 100);
+
 // Include child theme constants
 require_once get_stylesheet_directory() . '/child/includes/include-child-constants.php';
 require_once CHILD_INCLUDES_DIRECTORY . 'include-styles.php'; // All stylesheets are enqueued here
