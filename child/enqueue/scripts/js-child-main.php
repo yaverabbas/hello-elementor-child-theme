@@ -5,8 +5,9 @@ add_action('wp_enqueue_scripts', 'child_enqueue__child_scripts');
 function child_enqueue__child_scripts(): void
 {
     wp_enqueue_script('child-main',
-        CHILD_JS_DIRECTORY . 'child-main.js?h='.uniqid('', true),
-        array('jquery'), '1.0', true);
+        CHILD_JS_DIRECTORY . 'child-main.js', array('jquery'),
+        uniqid('', true),
+        true);
 
     // Localize the script with new data ajax_url and nonce
     wp_localize_script('child-main', 'child_main_object',
